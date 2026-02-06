@@ -6,8 +6,12 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'Dockerfile'
-      - .github/workflows/docker-image.yml # or whatever you named the file
+     paths:
+        - "Dockerfile"
+        - "renv.lock"
+        - "renv/**"
+        - "test_cowsay.R"
+        - ".github/workflows/docker-image.yml"
 
 jobs:
   push_to_registry:
@@ -27,10 +31,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ttimbers/dsci522-dockerfile-practice # change to your image
+          images: ${{ secrets.DOCKER_USERNAME }}/cjhzhang/dsci310-ia3-cjhzhang-docker
           tags: |
-            type=raw, value={{sha}},enable=${{github.ref_type != 'tag' }}
-            type=raw, value=latest
+            type=sha,prefix=sha-
+            type=raw,value=latest
+            type=ref,event=tag
+
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
