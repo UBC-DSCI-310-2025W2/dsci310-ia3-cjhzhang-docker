@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
   push:
     paths:
-     paths:
         - "Dockerfile"
         - "renv.lock"
         - "renv/**"
