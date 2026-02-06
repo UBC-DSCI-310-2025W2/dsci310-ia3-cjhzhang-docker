@@ -30,7 +30,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/cjhzhang/dsci310-ia3-cjhzhang-docker
+          images: ${{ secrets.DOCKER_USERNAME }}/dsci310-ia3-cjhzhang-docker
           tags: |
             type=sha,prefix=sha-
             type=raw,value=latest
