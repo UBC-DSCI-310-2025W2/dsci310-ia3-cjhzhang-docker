@@ -13,3 +13,5 @@ COPY test_cowsay.R /home/rstudio/project/test_cowsay.R
 RUN chown -R rstudio:rstudio /home/rstudio/project
 
 USER rstudio
+
+#trigger workflow
